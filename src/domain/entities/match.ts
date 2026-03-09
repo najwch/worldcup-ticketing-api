@@ -18,7 +18,31 @@ export class Match {
         public readonly stadium : Stadium,
         public readonly status : MatchStatus,
         public readonly stage : MatchStage,
-        public readonly date : Date
-        
-    ){}
+        public readonly date : Date)
+    
+    {
+        if (id <= 0){
+            throw new Error ("Le numéro d'id doit être supérieur à 0.")
+        }
+
+        if (homeScore < 0){
+            throw new Error ("Le score doit être supérieur ou égal à 0.")
+        }
+
+        if (awayScore < 0){
+            throw new Error ("Le score doit être supérieur ou égal à 0.")
+        }
+
+        if(homeTeam == awayTeam){
+            throw new Error ("Les deux équipes doivent être différentes.")
+        }
+    }
+
+    public isDraw() : boolean {
+        return false;
+    }
+
+    public winner() : Team | null {
+        return null;
+    }
 }
