@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { matchs } from "mock/matchs";
 
 console.log("Hello via Bun!");
 
@@ -11,4 +12,34 @@ app.get("/", (c) => {
         message : "World Cup Ticketing API",
     },
   );
+});
+
+app.get('/matchs', (c) => {
+  return c.json(
+    { matchs,
+      success : true,
+      message : "All matchs",
+      data : matchs
+
+    },
+  );
+      
+});
+
+app.get('/matchs/:id', (c) => {
+  const id = c.req.param('id') 
+  const match = matchs.find(m => m.id === Number(id))
+  
+  if (!match){
+    return c.json({success : false, error: "Match 666 does not exist"}, 404);
+  }
+  
+  return c.json(
+    { match,
+      message : "Match 1",
+      success : true,
+      data : match
+    },
+  );
+  
 });

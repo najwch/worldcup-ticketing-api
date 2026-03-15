@@ -39,7 +39,7 @@ export class Match {
     }
 
     public isDraw() : boolean {
-        return false;
+        return this.homeScore == this.awayScore;
     }
 
     public winner() : Team | null {
