@@ -1,11 +1,16 @@
 import { Hono } from "hono";
-import { matchs } from "mock/matchs";
+import matchsRouter from "./routes/matchs";
+import teamsRouter from "./routes/teams";
+import stadiumsRouter from "./routes/stadiums";
+import citiesRouter from "./routes/cities";
+import countriesRouter from "./routes/countries";
+import homeRouter from "./routes/home";
 
 console.log("Hello via Bun!");
 
 export const app = new Hono();
 
-app.get("/", (c) => {
+/* app.get("/", (c) => {
   return c.json(
     {
         success : true,
@@ -42,4 +47,12 @@ app.get('/matchs/:id', (c) => {
     },
   );
   
-});
+});*/
+
+app.route("/matchs", matchsRouter);
+app.route("/teams", teamsRouter);
+app.route("/stadiums", stadiumsRouter);
+app.route("/cities", citiesRouter);
+app.route("/countries", countriesRouter);
+app.route("/", homeRouter);
+app.route("/health", homeRouter);
