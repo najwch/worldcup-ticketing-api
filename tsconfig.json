@@ -3,8 +3,9 @@
 
     "baseUrl": "./src",
     "paths": {
-      "@domain/*" : [
-        "domain/*"]
+      "@domain/*" : ["domain/*"],
+      "@infrastructure/*": ["infrastructure/*"],
+      "@application/*": ["application/*"]
     },
 
     // Environment setup & latest features

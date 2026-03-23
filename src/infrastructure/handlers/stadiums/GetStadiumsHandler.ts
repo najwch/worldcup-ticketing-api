@@ -3,6 +3,17 @@ import { stadiums } from "@infrastructure/mock/stadiums";
 
 export class GetStadiumsHandler {
     async handle(c: Context){
-        return c.json({success : true, data: stadiums}, 200);
+        const nameFilter = c.req.query("name");
+        let stadiumsSorted = [...stadiums];
+
+        if (nameFilter) {
+            const search = nameFilter.toLowerCase();
+            stadiumsSorted = stadiumsSorted.filter(stadium => 
+                stadium.name.toLowerCase().includes(search)
+            );
+        }
+
+        return c.json({ success: true, stadiumsSorted }, 200);
+    
     }
 }
