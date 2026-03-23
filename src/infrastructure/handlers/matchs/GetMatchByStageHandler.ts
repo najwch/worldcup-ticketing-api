@@ -5,12 +5,12 @@ export class GetMatchByStageHandler {
     async handle(c : Context){
         const stage = c.req.query("stage");
 
-        const validStages = ["group", "round_of_16", "quarter_final", "semi_final", "final"];
+        const validStages = ["group", "round_of_32", "round_of_16", "quarter_finals", "semi_finals", "third_place", "final"];
 
         if (!stage || !validStages.includes(stage.toLowerCase())) {
             return c.json({
                 success: false,
-                error: "L'étape (stage) est incorrecte ou manquante."
+                error: "Le stage est incorrect."
             }, 400);
         }
 

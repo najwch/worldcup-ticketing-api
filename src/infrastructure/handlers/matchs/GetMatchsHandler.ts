@@ -26,8 +26,8 @@ export class GetMatchsHandler {
         
         return c.json({
             success : true,
-            message : teamCode ? `Matchs pour l'équipe ${teamCode}` : "All matchs",
-            data : matchsFiltres
+            message : teamCode ? `Matchs filtered by team[code] : ${teamCode}` : "All matchs",
+            data : matchsFiltres // renvoie la liste des matchs filtrés
         }, 200);
     }
 }
