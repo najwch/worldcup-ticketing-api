@@ -6,9 +6,9 @@ import { GetTeamMatchsByStageHandler } from "@infrastructure/handlers/teams/GetT
 
 const teamsRouter = new Hono();
 
-teamsRouter.get("/teams", (c) => new GetTeamsHandler().handle(c));
-teamsRouter.get("/teams/{fifaCode}", (c) => new GetTeamByFifaCodeHandler().handle(c));
-teamsRouter.get("/teams/{fifaCode}/matchs", (c) => new GetTeamMatchsByFifaCodeHandler().handle(c));
-teamsRouter.get("/teams/{fifaCode}/matchs/{stage}", (c) => new GetTeamMatchsByStageHandler().handle(c));
+teamsRouter.get("/", (c) => new GetTeamsHandler().handle(c));
+teamsRouter.get("/:fifaCode", (c) => new GetTeamByFifaCodeHandler().handle(c));
+teamsRouter.get("/:fifaCode/matchs", (c) => new GetTeamMatchsByFifaCodeHandler().handle(c));
+teamsRouter.get("/:fifaCode/matchs/:stage", (c) => new GetTeamMatchsByStageHandler().handle(c));
 
 export default teamsRouter;

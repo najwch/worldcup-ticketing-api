@@ -9,7 +9,7 @@ export class GetMatchsByStatusHandler {
         // dans le cas où la valeur de status ne fait pas partie des valeurs autorisées
         const validStatus = ["scheduled", "live", "finished", "cancelled"];
 
-        if(!status || validStatus.includes(status.toLowerCase())){
+        if(!status || !validStatus.includes(status.toLowerCase())){
             throw new HTTPException (400, {
                 message : "La valeur de status ne fait pas partie des valeurs autorisées."
             } )

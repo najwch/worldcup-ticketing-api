@@ -4,7 +4,7 @@ import { GetCityMatchsHandler } from "@infrastructure/handlers/cities/GetCityMat
 
 const citiesRouter = new Hono();
 
-citiesRouter.get("/cities", (c) => new GetCitiesHandler().handle(c));
-citiesRouter.get("/cities/{name}/matchs", (c) => new GetCityMatchsHandler().handle(c));
+citiesRouter.get("/", (c) => new GetCitiesHandler().handle(c));
+citiesRouter.get("/:name/matchs", (c) => new GetCityMatchsHandler().handle(c));
 
 export default citiesRouter;

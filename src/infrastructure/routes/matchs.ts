@@ -7,9 +7,9 @@ import { GetMatchsByStatusHandler } from "@infrastructure/handlers/matchs/GetMat
 const matchsRouter = new Hono();
 
 matchsRouter.get("/", (c) => new GetMatchsHandler().handle(c));
-matchsRouter.get("/matchs/stages/{stage}", (c) => new GetMatchByStageHandler().handle(c));
-matchsRouter.get("/matchs/status/{status}", (c) => new GetMatchsByStatusHandler().handle(c));
-matchsRouter.get("/matchs/{id}", (c) => new GetMatchByIdHandler().handle(c));
+matchsRouter.get("/stages/:stage", (c) => new GetMatchByStageHandler().handle(c));
+matchsRouter.get("/status/:status", (c) => new GetMatchsByStatusHandler().handle(c));
+matchsRouter.get("/:id", (c) => new GetMatchByIdHandler().handle(c));
 
 
 export default matchsRouter;

@@ -3,6 +3,6 @@ import { GetCountriesHandler } from "@infrastructure/handlers/countries/GetCount
 
 const countriesRouter = new Hono();
 
-countriesRouter.get("/countries", (c) => new GetCountriesHandler().handle(c));
+countriesRouter.get("/", (c) => new GetCountriesHandler().handle(c));
 
 export default countriesRouter;
