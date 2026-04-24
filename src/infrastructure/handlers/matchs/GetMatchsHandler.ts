@@ -1,10 +1,14 @@
 import type { Context } from "hono";
 import { matchs } from "@infrastructure/mock/matchs";
+import { HTTPException } from "hono/http-exception";
 
 export class GetMatchsHandler {
     async handle(c : Context){
         
         const teamCode = c.req.query("team[code]");
+    
+        const date = c.req.param("date");
+
         let matchsFiltres = [...matchs];
 
         // dans le cas où le code FIFA est incorrect => ERREUR
@@ -22,11 +26,26 @@ export class GetMatchsHandler {
                 m.awayTeam.code.value.toLowerCase() === search
             );
         }
+
+        // filtrage par date
+        if (date){
+            const date_ER = /^\d{4}-\d{2}-\d{2}$/;
+            if (!date_ER.test(date)){
+                throw new HTTPException(400, {
+                    message : "Le format de date est invalide."
+                });
+            }
+
+            matchsFiltres = matchsFiltres.filter(match => {
+                const match_date = match.date.toISOString().split("T")[0];
+                return match_date === date;
+            });
+        }
         
         
         return c.json({
             success : true,
-            message : teamCode ? `Matchs filtered by team[code] : ${teamCode}` : "All matchs",
+            message : "All matchs",
             data : matchsFiltres // renvoie la liste des matchs filtrés
         }, 200);
     }

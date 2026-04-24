@@ -13,6 +13,10 @@ export class GetCountriesHandler {
             );
         }
 
-        return c.json({ success: true, countriesSorted }, 200);
+        return c.json({ 
+            success: true, 
+            data : countriesSorted,
+            message : "All countries"
+        }, 200);
     }
 }

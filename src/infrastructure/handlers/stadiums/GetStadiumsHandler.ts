@@ -13,7 +13,11 @@ export class GetStadiumsHandler {
             );
         }
 
-        return c.json({ success: true, stadiumsSorted }, 200);
+        return c.json({ 
+            success: true, 
+            data : stadiumsSorted,
+            message : "All stadiums"
+        }, 200);
     
     }
 }

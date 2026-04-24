@@ -30,6 +30,10 @@ export class GetTeamsHandler {
                 : a.name.localeCompare(b.name);
         });
 
-        return c.json({ success: true, data: teamsSorted }, 200);
+        return c.json({ 
+            success: true, 
+            data: teamsSorted, 
+            message : `Teams filtered by name: ${nameFilter?.toLowerCase()}` 
+        }, 200);
     }
 }

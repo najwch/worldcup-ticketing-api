@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
 
-    "baseUrl": "./src",
     "paths": {
-      "@domain/*" : ["domain/*"],
-      "@infrastructure/*": ["infrastructure/*"],
-      "@application/*": ["application/*"]
+      "@domain/*" : ["./src/domain/*"],
+      "@infrastructure/*": ["./src/infrastructure/*"],
+      "@application/*": ["./src/application/*"]
     },
 
     // Environment setup & latest features
     "lib": ["ESNext"],
+    "types": ["bun"],
     "target": "ESNext",
-    "module": "Preserve",
+    "module": "ESNext",
     "moduleDetection": "force",
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",

@@ -19,6 +19,10 @@ export class GetTeamByFifaCodeHandler {
             return c.json({ success: false, error: "Not found" }, 404);
         }
         // autre cas où c'est ok
-        return c.json({ success: true, data: team }, 200);
+        return c.json({ 
+            success: true, 
+            data: team, 
+            message : `Team ${fifacode.toUpperCase()}`
+        }, 200);
     }
 }

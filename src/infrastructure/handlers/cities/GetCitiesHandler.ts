@@ -13,6 +13,10 @@ export class GetCitiesHandler {
             );
         }
 
-        return c.json({ success: true, citiesSorted }, 200);
+        return c.json({ 
+            success: true, 
+            data :citiesSorted,
+            message : "All cities"
+        }, 200);
     }
 }

@@ -27,7 +27,8 @@ export class GetCityMatchsHandler{
                 
                 return c.json({
                     success : true,
-                    data : matchsFiltres // retourne la liste des matchs se déroulant dans le stade de la ville
+                    data : matchsFiltres, // retourne la liste des matchs se déroulant dans le stade de la ville
+                    message : "Matchs in Miami"
                 }, 200)
     }
 }

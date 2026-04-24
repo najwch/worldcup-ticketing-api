@@ -24,7 +24,8 @@ export class GetTeamMatchsByFifaCodeHandler{
 
         return c.json({
             success: true,
-            data: matchsFiltres // renvoie la liste des matchs filtrés 
+            data: matchsFiltres, // renvoie la liste des matchs filtrés 
+            message : `Matchs for team ${fifaCode.toUpperCase()}`
         }, 200);
     }
 }
